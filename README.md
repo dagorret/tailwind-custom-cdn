@@ -74,6 +74,44 @@ See it in use: https://github.com/KevinBatdorf/tailwind-css-cdn
 **Answer:** The system is backwards compatible with legacy JS config files. However, for new configs, consider using the v4 CSS-based configuration with `@theme` directive in your CSS files. See [Tailwind CSS v4 documentation](https://tailwindcss.com/docs/v4-beta) for migration guides.
 
 ##
+**Question:** If I update Tailwind CSS version locally, does the CDN auto-recompile?
+
+**Answer:** **NO.** The CDN only recompiles when you **push changes to the GitHub repository**. Aquí está cómo funciona:
+
+- ✅ **Recompila automáticamente:** Cuando haces `git push` con cambios en `configs/` o `package.json`
+- ❌ **NO recompila:** Si solo modificas Tailwind localmente en tu máquina
+
+**Flujo correcto para actualizar el CDN:**
+
+```bash
+# 1. Modifica tu config o actualiza package.json
+vim configs/example.js
+# O actualiza la versión de Tailwind:
+vim package.json  # Cambiar "tailwindcss": "^4.1.17" a nueva versión
+
+# 2. Commit y push al repositorio
+git add .
+git commit -m "Actualizar configuración de Tailwind"
+git push origin master
+
+# 3. GitHub Actions detecta el cambio automáticamente
+# 4. Compila el CSS en la nube
+# 5. Crea un nuevo tag/release
+# 6. El CDN se actualiza automáticamente
+
+# Para forzar recompilación sin cambios reales:
+echo "# Build $(date)" >> package.json
+git add package.json
+git commit -m "Force rebuild"
+git push origin master
+```
+
+**Importante:**
+- El repo `tailwind-custom-cdn` es para **generar CDN en GitHub**
+- Compilar localmente (`npx tailwindcss`) es solo para **testing/desarrollo**
+- El CDN público se actualiza **solo con git push al repo**
+
+##
 **Question:** Can others use my config file?
 
 **Answer:** The repo needs to be public, so yes. If you're using this you should be aware of that and not include anything private in your config file.
