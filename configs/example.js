@@ -1,5 +1,6 @@
 // Legacy Tailwind CSS config format (v1-v3)
 // This still works with Tailwind CSS v4 for backwards compatibility
+// Updated: 2025-12-01
 export default {
     theme: {
       screens: {
