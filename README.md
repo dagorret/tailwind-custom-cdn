@@ -2,7 +2,17 @@
 
 A simple, automated tool for creating custom Tailwind CSS builds for CDN access. Use this for development when you don't want to deal with setting up a builder right away.
 
+**Now updated for Tailwind CSS v4!** 🎉
+
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/KevinBatdorf/tailwind-custom-cdn?label=version&style=flat-square)
+
+## What's New in v4
+
+- **Updated to Tailwind CSS 4.1.17** - Latest stable version
+- **New CSS-based configuration** - v4 uses `@theme` directive in CSS
+- **Backwards compatible** - Still supports legacy JS config files
+- **Faster builds** - New Oxide engine for improved performance
+- **Node.js 20** - Updated GitHub Actions workflows
 
 ## How it works
 1. Press "Use this template"
@@ -56,7 +66,12 @@ See it in use: https://github.com/KevinBatdorf/tailwind-css-cdn
 ##
 **Question:** What about plugins?
 
-**Answer:** Plugins aren't supported now, and I haven't looked into it. If there is some demand for plugins then I'll look into adding plugin support (show your support by giving the repo a star).
+**Answer:** Tailwind CSS v4 has a new plugin system. For now, basic builds are supported. Custom plugins can be added to your config files as needed.
+
+##
+**Question:** How do I migrate from v1/v2/v3 configs?
+
+**Answer:** The system is backwards compatible with legacy JS config files. However, for new configs, consider using the v4 CSS-based configuration with `@theme` directive in your CSS files. See [Tailwind CSS v4 documentation](https://tailwindcss.com/docs/v4-beta) for migration guides.
 
 ##
 **Question:** Can others use my config file?

@@ -1,4 +1,6 @@
-module.exports = {
+// Legacy Tailwind CSS config format (v1-v3)
+// This still works with Tailwind CSS v4 for backwards compatibility
+export default {
     theme: {
       screens: {
         sm: '640px',
@@ -11,7 +13,7 @@ module.exports = {
         body: ['Graphik', 'sans-serif'],
       },
       borderWidth: {
-        default: '1px',
+        DEFAULT: '1px',
         '0': '0',
         '2': '2px',
         '4': '4px',

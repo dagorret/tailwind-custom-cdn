@@ -19,9 +19,9 @@ jobs:
         with:
           token: ${{ secrets.PA_TOKEN }}
       - name: Setup Node
-        uses: actions/setup-node@v2-beta
+        uses: actions/setup-node@v4
         with:
-          node-version: '14'
+          node-version: '20'
       - name: Install Tailwind CSS
         run: |
           npm ci
@@ -51,7 +51,7 @@ jobs:
           OUTPUT_FILE="builds/"
           OUTPUT_FILE+=${CONFIG_FILE#"configs/"}
           OUTPUT_FILE=${OUTPUT_FILE%.*}.css
-          npx tailwindcss build style.css -o $OUTPUT_FILE -c $CONFIG_FILE
+          npx @tailwindcss/cli@next -i tailwind.css -o $OUTPUT_FILE -c $CONFIG_FILE --minify
       - name: Build Tailwind Multiple Config
         shell: bash
         if: steps.git-diff-config.outputs.count != 1 && steps.git-diff-build.outputs.count == 0
@@ -59,7 +59,7 @@ jobs:
           # Build everything in config
           for c in $(find configs -not -name '*.json'); do
             if [[ -f $c ]]; then
-              config=${c%%.*}; npx tailwindcss build style.css -o builds/${config#configs/}.css -c $c;
+              config=${c%%.*}; npx @tailwindcss/cli@next -i tailwind.css -o builds/${config#configs/}.css -c $c --minify;
             fi;
           done
       - name: Commit files into build folder

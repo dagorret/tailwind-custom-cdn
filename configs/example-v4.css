@@ -1,0 +1,35 @@
+/* Tailwind CSS v4 Configuration Example */
+/* This is the new CSS-based configuration format */
+
+@import "tailwindcss";
+
+@theme {
+  /* Custom colors */
+  --color-cyan: #9cdbff;
+
+  /* Custom spacing */
+  --spacing-96: 24rem;
+  --spacing-128: 32rem;
+
+  /* Custom screens/breakpoints */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+
+  /* Custom fonts */
+  --font-display: Gilroy, sans-serif;
+  --font-body: Graphik, sans-serif;
+
+  /* Custom border widths */
+  --border-width: 1px;
+  --border-width-2: 2px;
+  --border-width-4: 4px;
+}
+
+/* You can also add custom utilities here */
+@layer utilities {
+  .content-auto {
+    content-visibility: auto;
+  }
+}
